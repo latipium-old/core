@@ -12,18 +12,30 @@ namespace Com.Latipium.Core {
 		private readonly string[] _Provides;
 		private readonly int[] _Priorities;
 
+		/// <summary>
+		/// Gets the provided types.
+		/// </summary>
+		/// <value>A list of every module type this class provides.</value>
 		public string[] Provides {
 			get {
 				return _Provides;
 			}
 		}
 
+		/// <summary>
+		/// Gets the priorities of the provided types.
+		/// </summary>
+		/// <value>A list of the priorities for each provided core functionality.</value>
 		public int[] Priorities {
 			get {
 				return _Priorities;
 			}
 		}
 
+		/// <summary>
+		/// Load this implementation of the module.
+		/// </summary>
+		/// <param name="name">The name of the type of core functionality to load.</param>
 		public virtual void Load(string name) {
 		}
 
