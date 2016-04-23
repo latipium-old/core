@@ -15,6 +15,7 @@ cache:
         - Com.Latipium.Core.1.0.nupkg
 
 buildDebug:
+    image: mono
     script:
         - nuget restore -SolutionDirectory ..
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
@@ -24,7 +25,7 @@ buildDebug:
     only:
         - development
     tags:
-        - shell
+        - docker
         - latipium
     artifacts:
         name: "$CI_BUILD_REF_NAME-build"
@@ -32,6 +33,7 @@ buildDebug:
             - bin/Debug/
 
 buildRelease:
+    image: mono
     script:
         - nuget restore -SolutionDirectory ..
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
@@ -41,7 +43,7 @@ buildRelease:
     only:
         - master
     tags:
-        - shell
+        - docker
         - latipium
     artifacts:
         name: "$CI_BUILD_REF_NAME-build"
@@ -49,13 +51,14 @@ buildRelease:
             - bin/Release/
 
 packageDebug:
+    image: mono
     script:
         - nuget pack Debug.nuspec
     stage: package
     only:
         - development
     tags:
-        - shell
+        - docker
         - latipium
     artifacts:
         name: "$CI_BUILD_REF_NAME-pkg"
@@ -63,13 +66,14 @@ packageDebug:
             - Com.Latipium.Core.1.0.nupkg
 
 packageRelease:
+    image: mono
     script:
         - nuget pack Release.nuspec
     stage: package
     only:
         - master
     tags:
-        - shell
+        - docker
         - latipium
     artifacts:
         name: "$CI_BUILD_REF_NAME-pkg"
