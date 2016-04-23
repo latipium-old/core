@@ -1,0 +1,73 @@
+# .gitlab-ci.yml
+#
+# Copyright (c) 2016 Zach Deibert.
+# All Rights Reserved.
+
+stages:
+    - build
+    - package
+
+cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+        - bin/
+        - obj/
+        - Com.Latipium.Core.1.0.nupkg
+
+buildDebug:
+    script:
+        - nuget restore -SolutionDirectory ..
+        - xbuild Com.Latipium.Core.csproj /property:Configuration=Debug
+    stage: build
+    only:
+        - development
+    tags:
+        - shell
+        - latipium
+    artifacts:
+        name: "$CI_BUILD_REF_NAME-build"
+        paths:
+            - bin/Debug/
+
+buildRelease:
+    script:
+        - nuget restore -SolutionDirectory ..
+        - xbuild Com.Latipium.Core.csproj /property:Configuration=Release
+    stage: build
+    only:
+        - master
+    tags:
+        - shell
+        - latipium
+    artifacts:
+        name: "$CI_BUILD_REF_NAME-build"
+        paths:
+            - bin/Release/
+
+packageDebug:
+    script:
+        - nuget pack Debug.nuspec
+    stage: package
+    only:
+        - development
+    tags:
+        - shell
+        - latipium
+    artifacts:
+        name: "$CI_BUILD_REF_NAME-pkg"
+        paths:
+            - Com.Latipium.Core.1.0.nupkg
+
+packageRelease:
+    script:
+        - nuget pack Release.nuspec
+    stage: package
+    only:
+        - master
+    tags:
+        - shell
+        - latipium
+    artifacts:
+        name: "$CI_BUILD_REF_NAME-pkg"
+        paths:
+            - Com.Latipium.Core.1.0.nupkg
