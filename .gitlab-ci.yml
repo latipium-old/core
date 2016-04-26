@@ -19,6 +19,7 @@ buildDebug:
     script:
         - nuget restore -SolutionDirectory ..
         - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll .
+        - ls ../packages
         - mono Com.Latipium.Development.Versioner.exe -t AssemblyInfo -o AssemblyInfo.cs.new AssemblyInfo.cs
         - mv AssemblyInfo.cs.new AssemblyInfo.cs
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
