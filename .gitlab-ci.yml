@@ -18,9 +18,12 @@ buildDebug:
     image: mono
     script:
         - nuget restore -SolutionDirectory ..
+        - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll ../packages/LibGit2Sharp.NativeBinaries.1.0.129/libgit2/linux/amd64/libgit2-785d8c4.so .
+        - mono Com.Latipium.Development.Versioner.exe -t AssemblyInfo -o AssemblyInfo.cs AssemblyInfo.cs
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
         - xbuild Com.Latipium.Core.csproj /property:Configuration=Debug
         - rm ../Latipium.snk
+        - mono Com.Latipium.Development.Versioner.exe -t Nuspec Debug.nuspec -r packages.config | mono Com.Latipium.Development.Versioner.exe -t Nuspec -o bin/build.nuspec -r bin/Debug/Com.Latipium.Core.dll
     stage: build
     only:
         - development
@@ -36,9 +39,12 @@ buildRelease:
     image: mono
     script:
         - nuget restore -SolutionDirectory ..
+        - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll ../packages/LibGit2Sharp.NativeBinaries.1.0.129/libgit2/linux/amd64/libgit2-785d8c4.so .
+        - mono Com.Latipium.Development.Versioner.exe -t AssemblyInfo -o AssemblyInfo.cs AssemblyInfo.cs
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
         - xbuild Com.Latipium.Core.csproj /property:Configuration=Release
         - rm ../Latipium.snk
+        - mono Com.Latipium.Development.Versioner.exe -t Nuspec Release.nuspec -r packages.config | mono Com.Latipium.Development.Versioner.exe -t Nuspec -o bin/build.nuspec -r bin/Release/Com.Latipium.Core.dll
     stage: build
     only:
         - master
@@ -50,27 +56,13 @@ buildRelease:
         paths:
             - bin/Release/
 
-packageDebug:
+package:
     image: mono
     script:
-        - nuget pack Debug.nuspec
+        - nuget pack bin/build.nuspec
     stage: package
     only:
         - development
-    tags:
-        - docker
-        - latipium
-    artifacts:
-        name: "$CI_BUILD_REF_NAME-pkg"
-        paths:
-            - Com.Latipium.Core.1.0.nupkg
-
-packageRelease:
-    image: mono
-    script:
-        - nuget pack Release.nuspec
-    stage: package
-    only:
         - master
     tags:
         - docker
