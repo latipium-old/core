@@ -18,7 +18,7 @@ buildDebug:
     image: mono
     script:
         - nuget restore -SolutionDirectory ..
-        - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll ../packages/LibGit2Sharp.NativeBinaries.1.0.129/libgit2/linux/amd64/libgit2-785d8c4.so .
+        - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll .
         - mono Com.Latipium.Development.Versioner.exe -t AssemblyInfo -o AssemblyInfo.cs.new AssemblyInfo.cs
         - mv AssemblyInfo.cs.new AssemblyInfo.cs
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
@@ -40,7 +40,7 @@ buildRelease:
     image: mono
     script:
         - nuget restore -SolutionDirectory ..
-        - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll ../packages/LibGit2Sharp.NativeBinaries.1.0.129/libgit2/linux/amd64/libgit2-785d8c4.so .
+        - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll .
         - mono Com.Latipium.Development.Versioner.exe -t AssemblyInfo -o AssemblyInfo.cs.new AssemblyInfo.cs
         - mv AssemblyInfo.cs.new AssemblyInfo.cs
         - echo "$SIGNING_KEY" | base64 -d > ../Latipium.snk
