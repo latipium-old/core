@@ -29,6 +29,6 @@
         <tags>Latipium Framework</tags>
     </metadata>
     <files>
-        <file src="bin/Release/Com.Latipium.Core.dll" target="lib/net35" />
+        <file src="Release/Com.Latipium.Core.dll" target="lib/net35" />
     </files>
 </package>
