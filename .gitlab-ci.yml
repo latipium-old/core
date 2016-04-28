@@ -15,7 +15,7 @@ cache:
         - Com.Latipium.Core.1.0.nupkg
 
 buildDebug:
-    image: mono
+    image: zachdeibert/mono-docker
     script:
         - nuget restore -SolutionDirectory ..
         - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll .
@@ -38,7 +38,7 @@ buildDebug:
             - bin/Debug/
 
 buildRelease:
-    image: mono
+    image: zachdeibert/mono-docker
     script:
         - nuget restore -SolutionDirectory ..
         - cp ../packages/LibGit2Sharp.0.22.0/lib/net40/LibGit2Sharp.dll .
@@ -60,7 +60,7 @@ buildRelease:
             - bin/Release/
 
 package:
-    image: mono
+    image: zachdeibert/mono-docker
     script:
         - nuget pack bin/build.nuspec
     stage: package
