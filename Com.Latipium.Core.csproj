@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{78523371-9E06-4734-B1FA-B66FC4576EE6}</ProjectGuid>
+    <ProjectGuid>{297A210B-4C96-4BBE-8455-E07D97297714}</ProjectGuid>
     <RootNamespace>Com.Latipium.Core</RootNamespace>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
