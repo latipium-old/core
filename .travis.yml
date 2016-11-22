@@ -1,0 +1,7 @@
+language: csharp
+mono:
+- latest
+install:
+- nuget restore
+script:
+- ./.ci.sh

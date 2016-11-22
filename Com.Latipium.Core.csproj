@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{78523371-9E06-4734-B1FA-B66FC4576EE6}</ProjectGuid>
+    <RootNamespace>Com.Latipium.Template</RootNamespace>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ReleaseVersion>1.0</ReleaseVersion>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Com.Latipium.Core</AssemblyName>
+  </PropertyGroup>
+  <Import Project="Com.Latipium.Template.xml" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Prerelease'">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Prerelease|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Prerelease</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="log4net">
+      <HintPath>packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="AssemblyVersion.cs" />
+    <Compile Include="Com\Latipium\Core\AbstractLatipiumLoader.cs" />
+    <Compile Include="Com\Latipium\Core\AbstractLatipiumModule.cs" />
+    <Compile Include="Com\Latipium\Core\AbstractLatipiumObject.cs" />
+    <Compile Include="Com\Latipium\Core\LatipiumLoader.cs" />
+    <Compile Include="Com\Latipium\Core\LatipiumMethod.cs" />
+    <Compile Include="Com\Latipium\Core\LatipiumModule.cs" />
+    <Compile Include="Com\Latipium\Core\LatipiumObject.cs" />
+    <Compile Include="Com\Latipium\Core\ModuleFactory.cs" />
+    <Compile Include="Com\Latipium\Core\Tuple.cs" />
+    <Compile Include="Com\Latipium\Core\Data\MemberDescriptor.cs" />
+    <Compile Include="Com\Latipium\Core\Loading\AssemblyLoader.cs" />
+    <Compile Include="Com\Latipium\Core\Loading\LoaderLoader.cs" />
+    <Compile Include="Com\Latipium\Core\Loading\ModuleLoader.cs" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Deployment.LinuxDeployData generatePcFile="False" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
