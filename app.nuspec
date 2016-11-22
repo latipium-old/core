@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>Com.Latipium.Template</id>
+        <id>Com.Latipium.Core</id>
         <version>{{ version }}</version>
-        <title>Latipium Module Template</title>
+        <title>Latipium Core Module</title>
         <authors>Zach Deibert</authors>
-        <description>A template for modules developers to use as a starting point for their modules</description>
+        <description>The core code for Latipium</description>
         <releaseNotes></releaseNotes>
-        <summary>A template for modules developers to use as a starting point for their modules</summary>
+        <summary>The core code for Latipium</summary>
         <language>en-US</language>
         <projectUrl>https://latipium.com/</projectUrl>
         <iconUrl>https://latipium.com/favicon.ico</iconUrl>
-        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <licenseUrl>https://latipium.com/license</licenseUrl>
         <copyright>Copyright (c) 2016 Zach Deibert</copyright>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <dependencies>
@@ -23,6 +23,6 @@
         <tags>Latipium Development Non-Mod</tags>
     </metadata>
     <files>
-        <file src="bin/{{ configuration }}/Com.Latipium.Template.dll" target="lib/net45" />
+        <file src="bin/{{ configuration }}/Com.Latipium.Core.dll" target="lib/net45" />
     </files>
 </package>
