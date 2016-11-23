@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>{297A210B-4C96-4BBE-8455-E07D97297714}</ProjectGuid>
     <RootNamespace>Com.Latipium.Core</RootNamespace>
+    <LatipiumSigned>true</LatipiumSigned>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ReleaseVersion>1.0</ReleaseVersion>
